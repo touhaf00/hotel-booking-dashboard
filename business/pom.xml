@@ -14,5 +14,13 @@
     </parent>
 
     <artifactId>business</artifactId>
+    
+    <dependencies>
+    <dependency>
+        <groupId>fr.ulco</groupId>
+        <artifactId>persistence</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+</dependencies>
 
 </project>

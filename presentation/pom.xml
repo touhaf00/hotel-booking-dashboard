@@ -38,6 +38,12 @@
             <artifactId>spring-boot-starter-webmvc-test</artifactId>
             <scope>test</scope>
         </dependency>
+        
+        <dependency>
+    	    <groupId>fr.ulco</groupId>
+    		<artifactId>business</artifactId>
+    		<version>${project.version}</version>
+		</dependency>
 
     </dependencies>
 
@@ -49,5 +55,6 @@
             </plugin>
         </plugins>
     </build>
+   
 
 </project>
