@@ -1,0 +1,62 @@
+/* Couleurs de la page */
+
+.dashboard-page {
+    --bs-body-bg: #f5f2eb;
+    --bs-body-color: #303b35;
+    --bs-secondary-color: #656a62;
+    --bs-border-color: #dcd8ce;
+}
+
+.hotel-name {
+    color: #526d5b;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.dashboard-title {
+    color: #284d3d;
+    font-family: Georgia, serif;
+}
+
+/* Cartes des compteurs */
+
+.stat-card {
+    --bs-card-bg: #fffdf8;
+    --bs-card-border-color: #e0ddd3;
+    --bs-card-border-radius: 8px;
+}
+
+.stat-card .card-title {
+    color: #4f5d53;
+}
+
+.metric-value {
+    margin: 16px 0 12px;
+    color: #284d3d;
+    font-size: 44px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.2;
+}
+
+/* Bouton d’actualisation */
+
+.btn-hotel {
+    --bs-btn-color: #284d3d;
+    --bs-btn-border-color: #607864;
+    --bs-btn-hover-color: #fffdf8;
+    --bs-btn-hover-bg: #284d3d;
+    --bs-btn-hover-border-color: #284d3d;
+    --bs-btn-focus-shadow-rgb: 40, 77, 61;
+    --bs-btn-active-color: #fffdf8;
+    --bs-btn-active-bg: #284d3d;
+    --bs-btn-active-border-color: #284d3d;
+}
+
+/* Message lorsque les réservations sont absentes */
+
+.empty-message {
+    --bs-alert-color: #465640;
+    --bs-alert-bg: #eaf0e5;
+    --bs-alert-border-color: #ccd8c4;
+}

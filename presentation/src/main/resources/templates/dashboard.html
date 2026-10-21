@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tableau de bord | Hotel Booking</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+</head>
+
+<body class="dashboard-page">
+<main class="container py-4 py-md-5">
+
+    <header class="d-flex flex-column flex-md-row
+                   align-items-start align-items-md-center
+                   justify-content-between gap-3
+                   border-bottom pb-4 mb-4">
+
+        <div>
+            <p class="hotel-name mb-2">Hotel Booking</p>
+
+            <h1 class="display-6 dashboard-title mb-2">
+                Tableau de bord
+            </h1>
+
+            <p class="text-body-secondary mb-0">
+                Un aperçu des réservations et des espaces de l’hôtel.
+            </p>
+        </div>
+
+        <a class="btn btn-hotel px-4" th:href="@{/dashboard}">
+            Actualiser
+        </a>
+    </header>
+
+    <section aria-labelledby="titre-statistiques">
+        <h2 id="titre-statistiques" class="h5 mb-3">
+            Vue d’ensemble
+        </h2>
+
+        <div class="row g-3">
+
+            <div class="col-12 col-sm-6 col-lg-3">
+                <article class="card stat-card h-100">
+                    <div class="card-body p-4">
+                        <h3 class="card-title h6">Réservations</h3>
+                        <p class="metric-value"
+                           th:text="${statistiques.nombreReservations()}">—</p>
+                        <p class="small text-body-secondary mb-0">
+                            Tous les statuts
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3">
+                <article class="card stat-card h-100">
+                    <div class="card-body p-4">
+                        <h3 class="card-title h6">Clients</h3>
+                        <p class="metric-value"
+                           th:text="${statistiques.nombreClients()}">—</p>
+                        <p class="small text-body-secondary mb-0">
+                            Clients enregistrés
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3">
+                <article class="card stat-card h-100">
+                    <div class="card-body p-4">
+                        <h3 class="card-title h6">Chambres</h3>
+                        <p class="metric-value"
+                           th:text="${statistiques.nombreChambres()}">—</p>
+                        <p class="small text-body-secondary mb-0">
+                            Nombre total
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3">
+                <article class="card stat-card h-100">
+                    <div class="card-body p-4">
+                        <h3 class="card-title h6">Salles</h3>
+                        <p class="metric-value"
+                           th:text="${statistiques.nombreSalles()}">—</p>
+                        <p class="small text-body-secondary mb-0">
+                            Nombre total
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </section>
+
+    <p class="alert empty-message mt-4 mb-0"
+       th:if="${statistiques.nombreReservations() == 0}">
+        Aucune réservation enregistrée pour le moment.
+    </p>
+
+</main>
+</body>
+</html>
