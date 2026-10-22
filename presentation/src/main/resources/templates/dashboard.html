@@ -16,6 +16,12 @@
         rel="stylesheet"
         href="/css/dashboard.css"
         th:href="@{/css/dashboard.css}">
+    
+    <script src="/js/dashboard.js?v=1"
+        th:src="@{/js/dashboard.js(v=1)}"
+        defer>
+    </script>
+    
 </head>
 
 <body class="dashboard-page">
@@ -103,17 +109,29 @@
             </p>
         </div>
 
-        <a
-            class="btn btn-hotel d-inline-flex align-items-center gap-2"
-            th:href="@{/dashboard}">
-
-            <svg class="icon" aria-hidden="true" focusable="false">
-                <use href="#icon-refresh"></use>
-            </svg>
-
-            Actualiser
-        </a>
+		<a id="actualiser-dashboard"
+		   class="btn btn-hotel d-inline-flex align-items-center gap-2"
+		   href="/dashboard"
+		   th:href="@{/dashboard}"
+		   data-url="/dashboard/contenu"
+		   th:data-url="@{/dashboard/contenu}"
+		   aria-controls="dashboard-contenu">
+		
+		    <svg class="icon" aria-hidden="true" focusable="false">
+		        <use href="#icon-refresh"></use>
+		    </svg>
+		
+		    <span id="libelle-actualiser">Actualiser</span>
+		</a>
     </div>
+    
+    <p id="message-actualisation"
+   class="small text-secondary mb-3"
+   role="status"
+   aria-live="polite"
+   aria-atomic="true"></p>
+
+<div id="dashboard-contenu" th:fragment="contenu">
 
     <section
         class="mb-4 mb-lg-5"
@@ -371,10 +389,11 @@
         </div>
 
         <div class="panel-footer">
-            Actualisez la page pour afficher les dernières modifications.
-        </div>
+   			 Le bouton Actualiser met à jour les compteurs et cet aperçu.
+		</div>
 
     </section>
+</div>
 </main>
 
 </body>

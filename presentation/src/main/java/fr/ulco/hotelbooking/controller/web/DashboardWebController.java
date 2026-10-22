@@ -20,16 +20,24 @@ public class DashboardWebController {
 
     @GetMapping("/dashboard")
     public String afficherDashboard(Model model) {
+        remplirModel(model);
+        return "dashboard";
+    }
+    @GetMapping("/dashboard/contenu")
+    public String actualiserDashboard(Model model) {
+        remplirModel(model);
+        return "dashboard :: contenu";
+    }
+
+    private void remplirModel(Model model) {
         model.addAttribute(
                 "statistiques",
                 dashboardService.obtenirStatistiques()
         );
-        
+
         model.addAttribute(
                 "dernieresReservations",
                 reservationService.listerDernieres()
         );
-
-        return "dashboard";
     }
 }
