@@ -1,62 +1,353 @@
-/* Couleurs de la page */
+/* Identité de la page */
 
 .dashboard-page {
     --bs-body-bg: #f5f2eb;
     --bs-body-color: #303b35;
     --bs-secondary-color: #656a62;
-    --bs-border-color: #dcd8ce;
+    --bs-border-color: #e1ded5;
+    line-height: 1.6;
 }
 
-.hotel-name {
-    color: #526d5b;
-    font-size: 14px;
-    font-weight: 600;
+.icon-definitions {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
 }
 
-.dashboard-title {
+.icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.skip-link {
+    position: absolute;
+    z-index: 10;
+    padding: 12px;
+    background: #fffdf8;
     color: #284d3d;
-    font-family: Georgia, serif;
 }
 
-/* Cartes des compteurs */
+.topbar {
+    background: #fffdf8;
+    border-bottom: 1px solid #e1ded5;
+}
+
+.hotel-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #284d3d;
+    text-decoration: none;
+}
+
+.brand-mark {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 46px;
+    border-radius: 12px 12px 5px 5px;
+    background: #284d3d;
+    color: #fffdf8;
+    font: 28px Georgia, serif;
+}
+
+.brand-name,
+.brand-description {
+    display: block;
+}
+
+.brand-name {
+    font: 22px Georgia, serif;
+}
+
+.brand-description {
+    margin-top: 2px;
+    color: #656a62;
+    font-size: 12px;
+}
+
+.dashboard-nav .nav-item {
+    padding: 8px 14px;
+    border-radius: 6px;
+    color: #656a62;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.dashboard-nav .nav-item:hover,
+.dashboard-nav .active {
+    background: #edf1e9;
+    color: #284d3d;
+}
+
+.hotel-brand:focus-visible,
+.dashboard-nav a:focus-visible,
+.table-responsive:focus-visible {
+    outline: 3px solid #526d5b;
+    outline-offset: 4px;
+}
+
+/* En-tête et bouton */
+
+.page-heading {
+    margin-bottom: 30px;
+}
+
+.section-label {
+    color: #61775d;
+    font-size: 11px;
+    font-weight: 650;
+    letter-spacing: 1.6px;
+}
+
+.page-heading h1 {
+    margin-bottom: 10px;
+    color: #284d3d;
+    font: normal clamp(32px, 4vw, 46px) / 1.15 Georgia, serif;
+}
+
+.page-intro {
+    color: #656a62;
+    font-size: 15px;
+}
+
+.btn-hotel {
+    --bs-btn-color: #fffdf8;
+    --bs-btn-bg: #284d3d;
+    --bs-btn-border-color: #284d3d;
+
+    --bs-btn-hover-color: #fffdf8;
+    --bs-btn-hover-bg: #1d3b2d;
+    --bs-btn-hover-border-color: #1d3b2d;
+
+    --bs-btn-focus-shadow-rgb: 40, 77, 61;
+
+    --bs-btn-active-color: #fffdf8;
+    --bs-btn-active-bg: #1d3b2d;
+    --bs-btn-active-border-color: #1d3b2d;
+
+    padding: 10px 18px;
+    font-size: 14px;
+}
+
+.btn-hotel .icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* Compteurs */
 
 .stat-card {
     --bs-card-bg: #fffdf8;
-    --bs-card-border-color: #e0ddd3;
-    --bs-card-border-radius: 8px;
+    --bs-card-color: #303b35;
+    --bs-card-border-color: #e1ded5;
+    --bs-card-border-radius: 12px;
+    box-shadow: 0 3px 10px rgb(46 55 43 / 3%);
 }
 
-.stat-card .card-title {
-    color: #4f5d53;
+.stat-card-featured {
+    --bs-card-bg: #284d3d;
+    --bs-card-color: #fffdf8;
+    --bs-card-border-color: #284d3d;
 }
 
-.metric-value {
-    margin: 16px 0 12px;
-    color: #284d3d;
-    font-size: 44px;
+.stat-label {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.stat-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: #edf1e9;
+    color: #526d5b;
+    flex-shrink: 0;
+}
+
+.stat-card-featured .stat-icon {
+    background: rgb(255 253 248 / 12%);
+    color: #e3ebdd;
+}
+
+.stat-number {
+    margin: 12px 0 8px;
+    font-size: 48px;
     font-weight: 600;
     font-variant-numeric: tabular-nums;
-    line-height: 1.2;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
 }
 
-/* Bouton d’actualisation */
-
-.btn-hotel {
-    --bs-btn-color: #284d3d;
-    --bs-btn-border-color: #607864;
-    --bs-btn-hover-color: #fffdf8;
-    --bs-btn-hover-bg: #284d3d;
-    --bs-btn-hover-border-color: #284d3d;
-    --bs-btn-focus-shadow-rgb: 40, 77, 61;
-    --bs-btn-active-color: #fffdf8;
-    --bs-btn-active-bg: #284d3d;
-    --bs-btn-active-border-color: #284d3d;
+.stat-note {
+    margin: 0;
+    color: #656a62;
+    font-size: 13px;
 }
 
-/* Message lorsque les réservations sont absentes */
+.stat-card-featured .stat-note {
+    color: #d9e4d5;
+}
 
-.empty-message {
-    --bs-alert-color: #465640;
-    --bs-alert-bg: #eaf0e5;
-    --bs-alert-border-color: #ccd8c4;
+/* Tableau des réservations */
+
+.reservations-panel {
+    --bs-card-bg: #fffdf8;
+    --bs-card-border-color: #e1ded5;
+    --bs-card-border-radius: 12px;
+    scroll-margin-top: 24px;
+}
+
+.panel-heading {
+    padding: 24px 28px;
+}
+
+.panel-heading h2 {
+    margin: 0 0 6px;
+    color: #303b35;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.panel-heading p,
+.panel-footer {
+    color: #656a62;
+    font-size: 13px;
+}
+
+.panel-label {
+    padding: 5px 10px;
+    border: 1px solid #e1ded5;
+    border-radius: 5px;
+    color: #656a62;
+    font-size: 12px;
+}
+
+.reservations-table {
+    --bs-table-bg: #fffdf8;
+    --bs-table-color: #465248;
+    --bs-table-border-color: #ece8de;
+    --bs-table-hover-bg: #f3f4ed;
+    --bs-table-hover-color: #303b35;
+    font-size: 14px;
+}
+
+.reservations-table thead th {
+    padding: 13px 20px;
+    border-top: 1px solid #ece8de;
+    background: #f8f6f0;
+    color: #656a62;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.reservations-table tbody th,
+.reservations-table tbody td {
+    padding: 20px;
+}
+
+.reservations-table th:first-child {
+    padding-left: 28px;
+}
+
+.reservations-table th:last-child,
+.reservations-table td:last-child {
+    padding-right: 28px;
+}
+
+.reservation-reference,
+.reservation-price {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.status-badge {
+    padding: 7px 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status-confirmed {
+    border-color: #d3e2cc;
+    background: #edf4e9;
+    color: #365c2d;
+}
+
+.status-cancelled {
+    border-color: #ecd5cc;
+    background: #faeee9;
+    color: #8b4638;
+}
+
+.status-pending {
+    border-color: #e9ddb5;
+    background: #faf4e3;
+    color: #796021;
+}
+
+.status-neutral {
+    border-color: #dedfd7;
+    background: #f1f2ed;
+    color: #555f52;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.panel-footer {
+    padding: 14px 28px;
+}
+
+/* Tableau vide */
+
+.empty-state {
+    padding: 30px 12px;
+    color: #656a62;
+    text-align: center;
+}
+
+.empty-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 14px;
+    border-radius: 50%;
+    background: #edf1e9;
+    color: #61775d;
+}
+
+.empty-title {
+    margin-bottom: 4px;
+    color: #465248;
+    font-weight: 600;
+}
+
+.empty-state p:last-child {
+    font-size: 13px;
+}
+
+/* Petits écrans */
+
+@media (max-width: 575px) {
+    .panel-heading {
+        padding: 20px;
+    }
+
+    .panel-footer {
+        padding: 14px 20px;
+    }
 }

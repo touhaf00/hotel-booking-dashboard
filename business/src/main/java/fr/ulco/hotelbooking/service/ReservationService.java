@@ -32,6 +32,13 @@ public class ReservationService {
                 .map(reservationMapper::toDto)
                 .toList();
     }
+    
+    public List<ReservationDto> listerDernieres() {
+        return reservationRepository.findTop5ByOrderByIdDesc()
+                .stream()
+                .map(reservationMapper::toDto)
+                .toList();
+    }
 
     public Optional<ReservationDto> trouverParId(Long id) {
         if (id == null || id <= 0) {
