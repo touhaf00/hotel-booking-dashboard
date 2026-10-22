@@ -5,14 +5,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import fr.ulco.hotelbooking.service.DashboardService;
+import fr.ulco.hotelbooking.service.ReservationService;
 
 @Controller
 public class DashboardWebController {
 
     private final DashboardService dashboardService;
+    private final ReservationService reservationService;
 
-    public DashboardWebController(DashboardService dashboardService) {
+    public DashboardWebController(DashboardService dashboardService, ReservationService reservationService) {
         this.dashboardService = dashboardService;
+        this.reservationService = reservationService;
     }
 
     @GetMapping("/dashboard")
@@ -20,6 +23,11 @@ public class DashboardWebController {
         model.addAttribute(
                 "statistiques",
                 dashboardService.obtenirStatistiques()
+        );
+        
+        model.addAttribute(
+                "dernieresReservations",
+                reservationService.listerDernieres()
         );
 
         return "dashboard";
