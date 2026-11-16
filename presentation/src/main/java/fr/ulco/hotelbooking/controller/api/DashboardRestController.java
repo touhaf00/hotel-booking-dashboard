@@ -12,8 +12,11 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 @RestController
 @RequestMapping("/api/dashboard")
+@SecurityRequirement(name = "bearerAuth")
 @Tag(name = "Dashboard", description = "Statistiques générales de l'hôtel")
 public class DashboardRestController {
 
