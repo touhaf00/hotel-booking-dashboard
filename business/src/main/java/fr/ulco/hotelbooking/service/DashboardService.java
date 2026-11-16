@@ -8,9 +8,11 @@ import fr.ulco.hotelbooking.persistence.repository.ChambreRepository;
 import fr.ulco.hotelbooking.persistence.repository.ClientRepository;
 import fr.ulco.hotelbooking.persistence.repository.ReservationRepository;
 import fr.ulco.hotelbooking.persistence.repository.SalleRepository;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 @Service
 @Transactional(readOnly = true)
+@PreAuthorize("hasRole('ADMIN')")
 public class DashboardService {
 
     private final ReservationRepository reservationRepository;

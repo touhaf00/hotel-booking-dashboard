@@ -14,8 +14,11 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 @RestController
 @RequestMapping("/api/reservations")
+@SecurityRequirement(name = "bearerAuth")
 public class ReservationRestController {
 
     private final ReservationService reservationService;

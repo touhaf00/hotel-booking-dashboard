@@ -34,10 +34,20 @@ import fr.ulco.hotelbooking.persistence.entity.Reservation;
 import fr.ulco.hotelbooking.persistence.entity.Role;
 import fr.ulco.hotelbooking.persistence.entity.Salle;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+
+import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithMockUser;
+
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.jwt;
+
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @Transactional
+@WithMockUser(username = "dashboard-test", roles = "ADMIN")
 class DashboardIntegrationIT {
 
     @Autowired
@@ -48,9 +58,13 @@ class DashboardIntegrationIT {
 
     @Test
     void testApiRetourneDesZerosQuandLaBaseEstVide() throws Exception {
-        mockMvc.perform(
-                get("/api/dashboard").accept(MediaType.APPLICATION_JSON)
-        )
+    	mockMvc.perform(
+    	        get("/api/dashboard")
+    	                .with(jwt().authorities(
+    	                        new SimpleGrantedAuthority("ROLE_ADMIN")
+    	                ))
+    	                .accept(MediaType.APPLICATION_JSON)
+    	)
                 .andExpect(status().isOk())
                 .andExpect(content()
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -65,7 +79,11 @@ class DashboardIntegrationIT {
         creerDonnees();
 
         mockMvc.perform(
-                get("/api/dashboard").accept(MediaType.APPLICATION_JSON)
+                get("/api/dashboard")
+                        .with(jwt().authorities(
+                                new SimpleGrantedAuthority("ROLE_ADMIN")
+                        ))
+                        .accept(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk())
                 .andExpect(content()
@@ -207,5 +225,24 @@ class DashboardIntegrationIT {
         entityManager.clear();
 
         return ids;
+    }
+    
+    @Test
+    @WithAnonymousUser
+    void testRedirigeVersConnexionSansAuthentification()
+            throws Exception {
+
+        mockMvc.perform(get("/dashboard"))
+                .andExpect(status().isFound())
+                .andExpect(redirectedUrl("/login"));
+    }
+
+    @Test
+    @WithMockUser(username = "utilisateur-test", roles = "USER")
+    void testRefuseLeDashboardSansRoleAdministrateur()
+            throws Exception {
+
+        mockMvc.perform(get("/dashboard"))
+                .andExpect(status().isForbidden());
     }
 }
