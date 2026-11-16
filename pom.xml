@@ -39,6 +39,14 @@
 		<java.version>17</java.version>
 		<maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
 	</properties>
-
+	
+	<build>
+	    <plugins>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-failsafe-plugin</artifactId>
+			</plugin>
+	    </plugins>
+	</build>
 
 </project>
